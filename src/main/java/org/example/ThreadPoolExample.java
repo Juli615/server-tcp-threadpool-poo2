@@ -50,15 +50,14 @@ public class ThreadPoolExample {
                     return;
                 }
 
-                char ultimoCaracter = mensaje.charAt(mensaje.length() - 1);
-                int contador = 0;
-                for (char c : mensaje.toCharArray()) {
-                    if (c == ultimoCaracter) {
-                        contador++;
-                    }
-                }
+                // Calcular longitud de la palabra
+                int longitud = mensaje.length();
 
-                String respuesta = "El carácter '" + ultimoCaracter + "' aparece " + contador + " veces en el texto.";
+                // Verificar si es par o impar
+                String tipo = (longitud % 2 == 0) ? "par" : "impar";
+
+                // Armar respuesta
+                String respuesta = "La palabra tiene longitud " + longitud + " y es " + tipo + ".";
                 System.out.println("Procesado: " + respuesta + " (Hilo: " + Thread.currentThread().getName() + ")");
                 out.println(respuesta);
 
