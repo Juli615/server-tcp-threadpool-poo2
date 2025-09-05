@@ -61,6 +61,14 @@ public class ThreadPoolExample {
                 System.out.println("Procesado: " + respuesta + " (Hilo: " + Thread.currentThread().getName() + ")");
                 out.println(respuesta);
 
+                // Guardar en el archivo correspondiente
+                String nombreArchivo = tipo.equals("par") ? "par.txt" : "impar.txt";
+                try (FileWriter fw = new FileWriter(nombreArchivo, true);
+                     BufferedWriter bw = new BufferedWriter(fw);
+                     PrintWriter pw = new PrintWriter(bw)) {
+                    pw.println(mensaje); // Guardamos solo la palabra
+                }
+
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
